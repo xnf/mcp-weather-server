@@ -148,8 +148,7 @@ function interpretNaturalLanguageQuery(query: string): string {
 // Helper function to generate human-readable responses
 function generateHumanReadableResponse(
   query: string,
-  result: WeatherTimeSeries | WeatherTimeSeries[] | unknown,
-  _interpretedQuery: string
+  result: WeatherTimeSeries | WeatherTimeSeries[] | unknown
 ): { en: string; lv: string } {
   // Type guard for time series array
   const isTimeSeries = (data: unknown): data is WeatherTimeSeries[] =>
@@ -362,8 +361,7 @@ export const weatherRouter = router({
         const result = queryFn(forecast);
         const humanReadable = generateHumanReadableResponse(
           input.query,
-          result,
-          interpretedQuery
+          result
         );
 
         return {
